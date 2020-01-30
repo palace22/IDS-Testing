@@ -21,7 +21,7 @@ sudo apt install snort
 sudo snort -V
 ```
 
-![Alt text](snort-v.png )
+![Alt text](Screen/snort-v.png )
 
 ## Regole Snort
 Snort cattura i pacchetti secondo regole scritte all'interno di appositi file *.rules*. Esistono tre modalità per istanziare nuove regole:
@@ -64,7 +64,7 @@ Come possiamo vedere dai log:
 
 ![Alt text](Screen/DoS.png )
 
-Snort ha rilevato l'attacco e lo ha catalogato come DOS.
+Snort ha rilevato l'attacco e lo ha catalogato come DoS.
 
 ## Conclusioni
 
