@@ -13,8 +13,7 @@ Verrano installati e testati tre tra gli **Intrusion Detection System** più con
 * ### Suricata
 * ### Bro
 
-Verrà testato se questi soffisfano le caratteristiche degli IDS ovver:
+Verrà testato se questi soddisfano le caratteristiche che gli IDS devo avere:
 * Monitorare la rete
 * Riportare gli attacchi in tempo reale
-* 
 
