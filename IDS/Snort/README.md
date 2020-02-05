@@ -1,7 +1,6 @@
 # Snort
-[](https://www.html.it/pag/69358/installazione-4/)
 
-Snort è *"an open source intrusion prevention system capable of real-time traffic analysis and packet logging"*. Dunque non è solo un IDS ma permette anche di prevenire gli attacchi, esso ha quattro livelli di sicurezza: 
+Snort è *"an open source intrusion prevention system capable of real-time traffic analysis and packet logging"*, implementato da Matt Roesch nel 1998. Dunque non è solo un IDS ma permette anche di prevenire gli attacchi, esso ha quattro livelli di sicurezza: 
 1. Sniffer: cattura i pacchetti
 2. Packet logger: legge i pacchetti catturati
 3. IDS: monitora e analizza i pacchetti e in caso di pacchetti sospetti notifica l'intrusione
