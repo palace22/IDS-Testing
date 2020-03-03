@@ -1,4 +1,4 @@
-# Web Server Log Analisys
+# Web Server Log Analysis
 
 L'analisi dei log dei web server è essenziale per poter monitorare chi e come agisce con il nostro server. 
 Le principali informazioni che vengono riportate sono:
