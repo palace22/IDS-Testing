@@ -30,7 +30,7 @@ sudo suricata-update
 che aggiorna le regole. La documentazione è molto ampia e ben fatta, descrive come creare una regola e quali parametri scegliere a seconda del protocollo di comunicazione da osservare.
 
 ## Test
-
+### Ping
 Abbiamo visto come le regole si Snort sono supportate anche da Suritata dunque proviamo a settarne una e pingare i pacchetti *icmp*:
 
 ```
@@ -68,7 +68,21 @@ Troveremo i log complett all'interno dei file in */var/log/suricata/*:
     }
 }
 ```
+### DoS
+[Wiki Wireshark](https://wiki.wireshark.org/) fornisce una vasta gamma di file *.pcap* ( *public capture* ), ovvero file che contengono/catturano paccheti di rete. Servono ad analizzare e testate IDS e monitorare la rete. Scarichiamo *teardown.cap* e testiamo Suricata du un attacco di tipo Denial of Service:
 
+![Alt text](Screen/DoS.png )
+
+In modo simile a Snort è stato lanciato il comando per avviare il DoS, *Suricata* ha rilevato l'attacco è ha lanciato un segnale di *Alert* che verrà salvato nel file dei log di tutti gli alert, questo contiene: 
+```
+[**] [1:270:6] DOS Teardrop attack [**]
+[Classification: Attempted Denial of Service] [Priority: 2] 
+09/09-06:11:26.616090 00:40:33:D9:7C:FD -> 00:00:39:CF:D9:CD type:0x800 len:0x46
+10.1.1.1 -> 129.111.30.27 UDP TTL:64 TOS:0x0 ID:242 IpLen:20 DgmLen:56 MF
+Frag Offset: 0x0000   Frag Size: 0x0024
+[Xref => http://www.cert.org/advisories/CA-1997-28.html][Xref => http://cgi.nessus.org/plugins/dump.php3?id=10279][Xref => http://cve.mitre.org/cgi-bin/cvename.cgi?name=1999-0015][Xref => http://www.securityfocus.com/bid/124]
+
+```
 
 
 
