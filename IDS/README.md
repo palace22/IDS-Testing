@@ -7,11 +7,10 @@ Un IDS può essere di tre tipi:
 * Host IDS: Internamente a un host 
 * Hybrid IDS
 
-Verrano installati e testati tre tra gli **Intrusion Detection System** più conosciuti e validi:
+Verrano installati e testati due tra gli **Intrusion Detection System** più conosciuti e validi:
 
 * ### Snort
 * ### Suricata
-* ### Bro
 
 Verrà testato se questi soddisfano le caratteristiche che gli IDS devo avere:
 * Monitorare la rete
