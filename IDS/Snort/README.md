@@ -12,15 +12,56 @@ Andremo a installare **Snort** versione **2.9.7.0** su una VM *Kali Linux*.
 
 Installiamo prima di tutto il pacchetto *Data Acquisition library*, introdotto dalla versione 2.9, volto a creare un livello di astrazione rispetto a chiamate dirette alle funzioni *libpcap* ( libreria che fornisce funzioni per catturare pacchetti ).
 
-Fatto ciò possiamo passare all'installazione vera e propria riportata in *InstallSnort*.
+Fatto ciò possiamo passare all'installazione vera e propria riportata in *InstallSnort* o:
 
 ```
 sudo apt install snort
 
 sudo snort -V
 ```
-
 ![Alt text](Screen/snort-v.png )
+
+## Panoramica e configurazione
+Una volta installato troveremo i file di configurazione all'interno di */etc/snort*, principalmente:
+1. Regole: *rules*
+2. Configurazione generale Snort: *snort.conf*
+
+
+All'interno del file di configurazione troviamo tutti i paramentri da settare per il corretto funzionamento di Snort, in particolare le seguenti sezioni: 
+```
+###################################################
+# This file contains a sample snort configuration. 
+# You should take the following steps to create your own custom configuration:
+#
+#  1) Set the network variables.
+#  2) Configure the decoder
+#  3) Configure the base detection engine
+#  4) Configure dynamic loaded libraries
+#  5) Configure preprocessors
+#  6) Configure output plugins
+#  7) Customize your rule set
+#  8) Customize preprocessor and decoder rule set
+#  9) Customize shared object rule set
+###################################################
+```
+definite secondo l'architettura di Snort.
+
+1. **Set the network variables**: è qui che viene settata la rete da proteggere dunque l'IP della propria macchina,
+possiamo lasciare la configurazione di default:
+    ```
+    ipvar HOME_NET any
+    ```
+
+2. **Configure the decoder**: il decoder intercetta e attua la decodifica dei pacchetti, li classifica per protocollo e pacchetti malformati ( e.g. dimensione non corretta ) generando in caso un *alert*. 
+
+
+3. **Configure the base detection engine**: ovvero configurare il componente che si occupa del matching tra regole e pacchetti. Un pacchetto può corrispondere a più regole, di default viene scelta la prima.
+
+4. **Configure dynamic loaded libraries**: i moduli dynamici permettono di utilizzare decoder, preprocessore e regole definite dinamicamente dall'utente, senza il bisogno di fare un update di Snort. La caratteristica di questo strumento è che i pacchetti possono essere analizzati a discrezione dell'utente in quanto le regole sono scritte in C.
+5. **Configure preprocessors**: il preprocessore classifica ( in base al protocollo utilizzato ) e analizza preliminarmente i pacchetti per individuare quelli potenzialmente dannosi.
+6. **Configure output plugins**: qui viene configurato come e dove generare l'output; ad ogni corrispondenza del detecion engine tra pacchetto e regola, i componenti di *alerting* o *logging* generano un allarme e lo salvano (*loggano*) secondo le specifiche qui definite.
+
+I punti 7. 8. e 9. definiscono path e nome delle regole da includere.
 
 ## Regole Snort
 Snort cattura i pacchetti secondo regole scritte all'interno di appositi file *.rules*. Esistono tre modalità per istanziare nuove regole:
