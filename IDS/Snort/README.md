@@ -22,12 +22,12 @@ sudo snort -V
 ![Alt text](Screen/snort-v.png )
 
 ## Panoramica e configurazione
-Una volta installato troveremo i file di configurazione all'interno di */etc/snort*, principalmente:
-1. Regole: *rules*
+Una volta installato troveremo i file di configurazione all'interno di */etc/snort*, tra cui:
+1. Regole: *rules*: cartella in cui sono presenti i file delle regole;
 2. Configurazione generale Snort: *snort.conf*
 
 
-All'interno del file di configurazione troviamo tutti i paramentri da settare per il corretto funzionamento di Snort, in particolare le seguenti sezioni: 
+All'interno del file di configurazione troviamo tutti i paramentri da settare per il corretto funzionamento di Snort: 
 ```
 ###################################################
 # This file contains a sample snort configuration. 
@@ -44,21 +44,21 @@ All'interno del file di configurazione troviamo tutti i paramentri da settare pe
 #  9) Customize shared object rule set
 ###################################################
 ```
-definite secondo l'architettura di Snort.
 
-1. **Set the network variables**: è qui che viene settata la rete da proteggere dunque l'IP della propria macchina,
-possiamo lasciare la configurazione di default:
+1. **Set the network variables**: è qui che viene settata la rete da proteggere, possiamo lasciare la configurazione di default:
     ```
     ipvar HOME_NET any
     ```
 
-2. **Configure the decoder**: il decoder intercetta e attua la decodifica dei pacchetti, li classifica per protocollo e pacchetti malformati ( e.g. dimensione non corretta ) generando in caso un *alert*. 
+2. **Configure the decoder**: il decoder intercetta e attua la decodifica dei pacchetti, li classifica per protocollo e rileva pacchetti malformati ( e.g. dimensione non corretta ) generando un *alert*. 
 
 
-3. **Configure the base detection engine**: ovvero configurare il componente che si occupa del matching tra regole e pacchetti. Un pacchetto può corrispondere a più regole, di default viene scelta la prima.
+3. **Configure the base detection engine**: è il componente che si occupa del matching tra regole e pacchetti. Un pacchetto può corrispondere a più regole, di default viene scelta la prima.
 
 4. **Configure dynamic loaded libraries**: i moduli dynamici permettono di utilizzare decoder, preprocessore e regole definite dinamicamente dall'utente, senza il bisogno di fare un update di Snort. La caratteristica di questo strumento è che i pacchetti possono essere analizzati a discrezione dell'utente in quanto le regole sono scritte in C.
+
 5. **Configure preprocessors**: il preprocessore classifica ( in base al protocollo utilizzato ) e analizza preliminarmente i pacchetti per individuare quelli potenzialmente dannosi.
+
 6. **Configure output plugins**: qui viene configurato come e dove generare l'output; ad ogni corrispondenza del detecion engine tra pacchetto e regola, i componenti di *alerting* o *logging* generano un allarme e lo salvano (*loggano*) secondo le specifiche qui definite.
 
 I punti 7. 8. e 9. definiscono path e nome delle regole da includere.
@@ -105,8 +105,3 @@ Come possiamo vedere dai log:
 ![Alt text](Screen/DoS.png )
 
 Snort ha rilevato l'attacco e lo ha catalogato come DoS.
-
-## Conclusioni
-
-Snort si è rilevato essere un buon IDS, prima di tutto è *open source*, ha una community molto ampia che gli consente di avere regole sempre aggiornate; inoltre la sua modularità gli consente di essere ampliato e migliorato, aggiungendo i plugin di interesse.
- 

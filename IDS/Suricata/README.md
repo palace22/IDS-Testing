@@ -81,7 +81,7 @@ Troveremo i log complett all'interno dei file in */var/log/suricata/*:
 
 ![Alt text](Screen/DoS.png )
 
-In modo simile a Snort è stato lanciato il comando per avviare il DoS, *Suricata* ha rilevato l'attacco è ha lanciato un segnale di *Alert* che verrà salvato nel file dei log di tutti gli alert, questo contiene: 
+In modo simile a Snort è stato lanciato il comando per avviare il DoS, *Suricata* ha rilevato l'attacco è ha lanciato un segnale di *Alert* che verrà salvato nel file dei log, questo contiene: 
 ```
 [**] [1:270:6] DOS Teardrop attack [**]
 [Classification: Attempted Denial of Service] [Priority: 2] 
