@@ -9,18 +9,17 @@ Oltre ad essere un IDS è anche un IPS e NSM ( Network Security Monitoring ), ol
 
 ## Installazione
 
-Per l'installazione su *Kali Linux*, basta seguire la guida della pagina ufficiale che riporta le dipendenze e i file e cartelle da creare. 
+Per l'installazione su *Kali Linux*, basta seguire la guida della pagina ufficiale che riporta sia le dipendenze che i file e cartelle da creare. 
 
-Andremo a installare *Suricata* come solo IDS. Aprendo il file di configurazione si nota quanto è più intuitivo rispetto a quello di *Snort*. Settiamo il path di un nostro file *.rules* e testiamo.
 
-```yml
-default-rule-path: /var/lib/suricata/rules
-
-rule-files:
-  - suricata.rules
-```
 
 ![Alt text](Screen/Suricata.png )
+
+## Panoramica e configurazione
+Dopo aver installato *Suricata* aprendo il file di configurazione si nota quanto è più intuitivo rispetto a quello di *Snort* grazie al formato *yaml*.
+Ai fini del test configuriamo il tool come per Snort, settando rete da proteggere, output dei log e le regole.
+Le principali differenze verranno analizzate nel confronto finale.
+
 
 ## Regole Suricata
 Suricata chiama le proprie regole anche *signatures*. Il formato è come quello di Snort, è possibile infatti importare le propie regole Snort e utilizzare quelle della Community di **PulledPork**; inotre è di default la funzione 
@@ -30,6 +29,15 @@ sudo suricata-update
 che aggiorna le regole. La documentazione è molto ampia e ben fatta, descrive come creare una regola e quali parametri scegliere a seconda del protocollo di comunicazione da osservare.
 
 ## Test
+Settiamo il path di un nostro file *.rules* e testiamo.
+
+```yml
+default-rule-path: /var/lib/suricata/rules
+
+rule-files:
+  - suricata.rules
+```
+
 ### Ping
 Abbiamo visto come le regole si Snort sono supportate anche da Suritata dunque proviamo a settarne una e pingare i pacchetti *icmp*:
 
